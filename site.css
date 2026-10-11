@@ -37,7 +37,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   font-weight: var(--fw-bold);
   letter-spacing: var(--ls-eyebrow);
   text-transform: uppercase;
-  color: var(--brand-accent);
+  color: var(--teal-600);   /* כהה מעט מצבע המותג, לניגודיות מספקת לפי תקן הנגישות */
 }
 .eyebrow.on-dark { color: var(--teal-300); }
 
