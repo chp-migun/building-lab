@@ -131,6 +131,24 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .brand-name { color: var(--blue-900); font-size: 16px; font-weight: 800; line-height: 1.15; display: block; }
 .brand-sub { color: var(--text-muted); font-size: 12.5px; line-height: 1.2; display: block; }
 
+/* לוגו מבדקי ישראל ליד הלוגו של מת״י — במחשב בלבד */
+.brand-partner {
+  height: 40px; width: auto; flex-shrink: 0;
+  padding-inline-start: 18px; border-inline-start: 1px solid var(--border-subtle);
+}
+@media (max-width: 1180px) { .brand-partner { display: none; } }
+
+/* כפתור וואטסאפ צף — במחשב בלבד */
+.wa-float {
+  position: fixed; inset-inline-end: 20px; bottom: 22px; z-index: 55;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: #25D366; color: #fff; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.wa-float:hover { transform: scale(1.06); text-decoration: none; }
+@media (max-width: 720px) { .wa-float { display: none; } }
+
 .mainnav { display: flex; gap: 4px; margin-inline-start: auto; }
 .mainnav a {
   padding: 9px 14px; border-radius: var(--radius-md); font-size: 15px; font-weight: 500;
@@ -197,6 +215,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   }
   .mobile-bar-btn.primary { background: var(--brand-primary); color: #fff; }
   .mobile-bar-btn.secondary { background: var(--surface-card); color: var(--blue-700); border: 1px solid var(--border-default); }
+  .mobile-bar-btn.whatsapp { background: #25D366; color: #fff; }
+  .mobile-bar-btn { font-size: 15px; gap: 6px; }
 }
 
 /* ---------- סינון בקטלוג: בטלפון הופך לפס גלילה אופקי ---------- */
