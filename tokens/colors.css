@@ -1,0 +1,98 @@
+/* ============================================================
+   COLORS — מת"י building-lab design system
+   Institutional navy/blue + technical teal accent.
+   Base ramps first, then semantic aliases.
+   ============================================================ */
+:root {
+  /* ---- Brand blue ramp (institutional) ---- */
+  --blue-50:  #EAF1FB;
+  --blue-100: #CFE0F7;
+  --blue-200: #A3C4EF;
+  --blue-300: #6F9FE3;
+  --blue-400: #3D79D1;
+  --blue-500: #1457B0;   /* primary action */
+  --blue-600: #0E4593;
+  --blue-700: #0B3576;
+  --blue-800: #0A2A5C;
+  --blue-900: #11224E;   /* navy — headers, footer */
+  --blue-950: #0A1530;
+
+  /* ---- Technical teal accent ---- */
+  --teal-50:  #E6FAF7;
+  --teal-100: #C2F1EA;
+  --teal-200: #88E2D6;
+  --teal-300: #46CDBC;
+  --teal-400: #14B3A2;
+  --teal-500: #0E9B8C;   /* accent */
+  --teal-600: #0B7E72;
+  --teal-700: #0A6359;
+
+  /* ---- Cool neutral (slate) ramp ---- */
+  --gray-0:   #FFFFFF;
+  --gray-50:  #F5F7FA;
+  --gray-100: #EAEEF4;
+  --gray-200: #D6DEEA;
+  --gray-300: #B8C4D6;
+  --gray-400: #8B9BB4;
+  --gray-500: #61728C;
+  --gray-600: #455471;
+  --gray-700: #2F3B54;
+  --gray-800: #1D2740;
+  --gray-900: #111A2E;
+
+  /* ---- Semantic status ---- */
+  --green-50:  #E7F6EE;
+  --green-500: #1E9E5A;   /* pass / approved */
+  --green-700: #157243;
+  --amber-50:  #FCF3E5;
+  --amber-500: #D9892B;   /* in-progress / caution */
+  --amber-700: #A2611A;
+  --red-50:    #FBEAE7;
+  --red-500:   #C8402F;   /* fail / rejected */
+  --red-700:   #95291C;
+
+  /* ============================================================
+     SEMANTIC ALIASES
+     ============================================================ */
+  /* Brand */
+  --brand-primary:    var(--blue-500);
+  --brand-primary-strong: var(--blue-700);
+  --brand-navy:       var(--blue-900);
+  --brand-accent:     var(--teal-500);
+  --brand-accent-soft: var(--teal-50);
+
+  /* Text */
+  --text-strong:   var(--gray-900);
+  --text-body:     var(--gray-700);
+  --text-muted:    var(--gray-500);
+  --text-faint:    var(--gray-400);
+  --text-on-brand: var(--gray-0);
+  --text-link:     var(--blue-600);
+
+  /* Surfaces */
+  --surface-page:    var(--gray-50);
+  --surface-card:    var(--gray-0);
+  --surface-sunken:  var(--gray-100);
+  --surface-navy:    var(--blue-900);
+  --surface-brand:   var(--blue-500);
+  --surface-accent-soft: var(--teal-50);
+
+  /* Borders / lines */
+  --border-subtle:  var(--gray-200);
+  --border-default: var(--gray-300);
+  --border-strong:  var(--gray-400);
+  --border-brand:   var(--blue-500);
+
+  /* Status */
+  --status-pass-fg:   var(--green-700);
+  --status-pass-bg:   var(--green-50);
+  --status-prog-fg:   var(--amber-700);
+  --status-prog-bg:   var(--amber-50);
+  --status-fail-fg:   var(--red-700);
+  --status-fail-bg:   var(--red-50);
+  --status-info-fg:   var(--blue-700);
+  --status-info-bg:   var(--blue-50);
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(20, 87, 176, 0.30);
+}

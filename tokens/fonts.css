@@ -1,0 +1,4 @@
+/* Heebo — primary Hebrew/Latin typeface for the מת"י building-lab system.
+   Loaded from Google Fonts CDN. To self-host, replace with @font-face rules
+   pointing at local .woff2 files and drop the @import. */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
