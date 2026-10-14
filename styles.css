@@ -28,8 +28,12 @@ h1, h2, h3, h4 {
   color: var(--text-strong);
   line-height: var(--lh-tight);
   font-weight: var(--fw-bold);
+  letter-spacing: -0.015em;
+  text-wrap: balance;   /* בלי מילה בודדת שנשארת לבד בשורה האחרונה */
   margin: 0;
 }
+p { text-wrap: pretty; }
+::selection { background: var(--teal-100); color: var(--blue-900); }
 
 a { color: var(--text-link); text-decoration: none; }
 a:hover { text-decoration: underline; }

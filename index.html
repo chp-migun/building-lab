@@ -14,9 +14,16 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script>
+  // תנועה בגלילה: מופעלת לפני הציור הראשון, רק למי שלא ביקש להפחית תנועה (motion.js מבטל אותה אם צריך)
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ready');
+</script>
 <link rel="icon" type="image/png" href="assets/favicon-64.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="site.css?v=35b4d0f57c">
+<link rel="stylesheet" href="site.css?v=8847fba8da">
 <link rel="canonical" href="https://chp-migun.github.io/building-lab/">
 <meta property="og:url" content="https://chp-migun.github.io/building-lab/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"מעבדת הבניין — מבדקי ישראל מעבדות איכות בע״מ","description":"מעבדה מוסמכת לבדיקות תקן ואיכות בבנייה — מהקרקע ועד טופס האכלוס.","url":"https://chp-migun.github.io/building-lab/","logo":"https://chp-migun.github.io/building-lab/assets/logo-mivdaki.png","image":"https://chp-migun.github.io/building-lab/assets/og-image.png","telephone":"+972-3-6314070","email":"office@maabadotil.com","address":{"@type":"PostalAddress","streetAddress":"ההגנה 11","addressLocality":"אור יהודה","addressCountry":"IL"}}</script>
@@ -27,6 +34,6 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="app.js?v=c8078b6629"></script>
+<script src="app.js?v=61a9efa6c6"></script>
 </body>
 </html>

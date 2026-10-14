@@ -1,4 +1,3 @@
-/* Heebo — primary Hebrew/Latin typeface for the מת"י building-lab system.
-   Loaded from Google Fonts CDN. To self-host, replace with @font-face rules
-   pointing at local .woff2 files and drop the @import. */
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+/* IBM Plex Sans Hebrew — גופן הנדסי ומדויק, מתאים למעבדה. IBM Plex Mono — למספרי תקנים ונתונים.
+   באתר הגופנים נטענים ישירות מ-index.html (מהיר יותר מ-@import), כאן הם נטענים לשאר מסמכי מערכת העיצוב. */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
