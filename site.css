@@ -382,16 +382,43 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
           mask-image: linear-gradient(to left, transparent 0%, #000 30%);
 }
 .x3-canvas:active { cursor: grabbing; }
-/* תמונת הרגע הראשון של הדגם: באותו מקום ובאותה מסכה כמו הציור. נעלמת אחרי שהדגם החי נכנס.
-   למי שביקש פחות תנועה הדגם מציג תמונה אחרת (רגע שקט), ולכן אצלו היא לא מוצגת */
-.x3-poster {
-  position: absolute; left: 0; top: 0; width: 64%; height: 100%; object-fit: contain; pointer-events: none; user-select: none;
+/* עד שהדגם מוכן: רצפת שרטוט חיה במקום שבו הדגם יעמוד (שנתות, סריקה, טבעת צהובה). נמוגה כשהדגם נכנס */
+.x3-wait {
+  position: absolute; left: 0; top: 0; width: 64%; height: 100%; pointer-events: none; perspective: 900px;
+  transition: opacity 0.7s var(--ease), visibility 0s linear 0.7s;
   -webkit-mask-image: linear-gradient(to left, transparent 0%, #000 30%);
           mask-image: linear-gradient(to left, transparent 0%, #000 30%);
 }
-.hx-scene.is-reset .x3-poster { display: none; }
-@media (prefers-reduced-motion: reduce) { .x3-poster { display: none; } }
-.hx-scene.is-ready .x3-poster { opacity: 0; transition: opacity 0.4s ease 0.55s; }
+.hx-scene.is-ready .x3-wait { opacity: 0; visibility: hidden; }
+.x3-wait-floor {
+  position: absolute; left: 42%; top: 49%; width: min(68%, 620px); aspect-ratio: 1; translate: -50% -50%;
+  transform: rotateX(57deg); animation: waitIn 0.8s var(--ease) both;   /* המיקום והזווית — כמו רצפת השרטוט בתמונה הראשונה של הדגם */
+}
+.x3-wait-floor i { position: absolute; border-radius: 50%; }
+/* שנתות החוגה */
+.w-ticks {
+  inset: 0; animation: spinSlow 60s linear infinite;
+  background: repeating-conic-gradient(rgba(255, 255, 255, 0.6) 0 0.5deg, transparent 0.5deg 4deg);
+  -webkit-mask-image: radial-gradient(circle closest-side, transparent 0 86%, #000 86.5% 97%, transparent 97.5%);
+          mask-image: radial-gradient(circle closest-side, transparent 0 86%, #000 86.5% 97%, transparent 97.5%);
+}
+/* סריקה: אלומה צהובה שמסתובבת — "עובדים על זה" */
+.w-scan {
+  inset: 6%; animation: spinSlow 2.6s linear infinite;
+  background: conic-gradient(from 0deg, rgba(255, 214, 90, 0.42), rgba(255, 214, 90, 0) 75deg, transparent 360deg);
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 0 30%, transparent 97%);
+          mask-image: radial-gradient(circle closest-side, #000 0 30%, transparent 97%);
+}
+/* טבעת המדידה הצהובה המקווקוות */
+.w-ring { inset: 20%; border: 3px dashed rgba(255, 214, 90, 0.85); animation: spinSlow 30s linear infinite reverse; }
+/* נקודת המרכז: פועמת */
+.w-dot {
+  left: 50%; top: 50%; width: 3.2%; aspect-ratio: 1; translate: -50% -50%; background: var(--yellow-400, #FFD65A);
+  box-shadow: 0 0 0 0 rgba(255, 214, 90, 0.6); animation: waitPulse 1.6s ease-out infinite;
+}
+@keyframes waitIn { from { opacity: 0; scale: 0.82; } }
+@keyframes waitPulse { to { box-shadow: 0 0 0 26px rgba(255, 214, 90, 0); } }
+@media (prefers-reduced-motion: reduce) { .x3-wait-floor, .x3-wait-floor i { animation: none !important; } }
 .hx-scene.is-ready .x3-canvas { opacity: 1; }
 .hx-scene.is-reset .x3-canvas, .hx-scene.is-reset .x3-pin { opacity: 0; transition: opacity 0.6s ease; }
 
@@ -483,11 +510,12 @@ html.motion-ready .hx-scene.is-ready:not(.was-dragged) .x3-hint { animation: hin
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
   }
-  .x3-poster {
+  .x3-wait {
     width: 100%;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
   }
+  .x3-wait-floor { left: 50%; top: 58%; width: min(84%, 520px); }
   .hx-scene.is-fallback { top: auto; left: auto; width: auto; transform: none; height: auto; margin: 24px var(--gutter) 0; }
   .x3-hint { left: 50%; bottom: 10px; transform: translateX(-50%); }
   html.motion-ready .hx-scene.is-ready:not(.was-dragged) .x3-hint { animation-name: hintInC; }
