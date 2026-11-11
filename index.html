@@ -15,8 +15,22 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script>
-  // תנועה בגלילה: מופעלת לפני הציור הראשון, רק למי שלא ביקש להפחית תנועה (motion.js מבטל אותה אם צריך)
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion-ready');
+  // תנועה: כבויה למי שביקש במחשב "הפחתת תנועה", וגם למי שלחץ באתר על "עצירת תנועה" (דרישת נגישות; הבחירה נשמרת בדפדפן).
+  // כל הקוד שואל את window.MatiMotion.off, ולא את הדפדפן ישירות. כשהתנועה פועלת, המחלקה motion-ready נוספת
+  // לפני הציור הראשון (motion.js מבטל אותה אם צריך); כשהיא כבויה — המחלקה no-motion (site.css).
+  (function () {
+    var os = matchMedia('(prefers-reduced-motion: reduce)').matches, saved = null;
+    try { saved = localStorage.getItem('mati-motion'); } catch (e) {}
+    var off = os || saved === 'off';
+    window.MatiMotion = {
+      off: off, os: os,
+      toggle: function () {
+        try { localStorage.setItem('mati-motion', off ? 'on' : 'off'); } catch (e) {}
+        location.reload();
+      }
+    };
+    document.documentElement.classList.add(off ? 'no-motion' : 'motion-ready');
+  })();
   // דף הבית: מנוע התלת-ממד של הפתיחה (HeroScene.jsx) מתחיל לרדת כבר עכשיו, במקביל לשאר האתר, ולא אחרי שהאתר נטען
   if (/^(#\/?)?(\?.*)?$/.test(location.hash)) {
     var l3 = document.createElement('link');
@@ -31,7 +45,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="site.css?v=c1eb0eb34b">
+<link rel="stylesheet" href="site.css?v=49e9d20ea6">
 <link rel="canonical" href="https://chp-migun.github.io/building-lab/">
 <meta property="og:url" content="https://chp-migun.github.io/building-lab/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"מכון התקנים הישראלי — ענף בניה ותשתיות","description":"מעבדה מטעם מכון התקנים הישראלי, ענף בניה ותשתיות. כל בדיקות הבניה והתשתיות במקום אחד.","url":"https://chp-migun.github.io/building-lab/","logo":"https://chp-migun.github.io/building-lab/assets/brand/logo.png","image":"https://chp-migun.github.io/building-lab/assets/og-image.png","telephone":"+972-3-6314070","email":"office@maabadotil.com","address":{"@type":"PostalAddress","streetAddress":"ההגנה 11","addressLocality":"אור יהודה","addressCountry":"IL"}}</script>
@@ -42,6 +56,6 @@
 <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="app.js?v=0981019bd6"></script>
+<script src="app.js?v=e28338dbfe"></script>
 </body>
 </html>

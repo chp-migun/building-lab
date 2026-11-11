@@ -1607,3 +1607,50 @@ html.live .pg-art::after { animation: spinSlow 40s linear infinite reverse; }
 .cat-sec.fold h2 .hd-ic { width: 36px; height: 36px; }
 .cat-sec.fold:not(.shut) { padding-bottom: 18px; }
 .cat-sec.fold:not(.shut) h2 { border-bottom: 2px solid var(--blue-500); }
+
+/* =====================================================================
+   נגישות ודרישות חוק (12.11.2026)
+   ===================================================================== */
+/* עצירת תנועה: המחלקה no-motion נוספת ל-<html> (בראש index.html) למי שלחץ על "עצירת התנועה באתר",
+   וגם למי שביקש במחשב "הפחתת תנועה". כל האנימציות נעצרות; תגובה למעבר עכבר נשארת. */
+html.no-motion *, html.no-motion *::before, html.no-motion *::after { animation: none !important; scroll-behavior: auto !important; }
+html.no-motion body::before { display: none; }
+html.no-motion .reveal:not(.in) { opacity: 1 !important; }
+html.no-motion .dx-prog { display: none; }
+html.no-motion .dx-row.on, html.no-motion .cat-tile, html.no-motion .logo-tile, html.no-motion .ab-cat { transform: none !important; }
+
+/* הכפתור עצמו: אייקון בסרגל העליון, שורה בתפריט הטלפון, וטקסט בתחתית העמוד */
+button.motion-btn { border: 0; background: none; font-family: inherit; cursor: pointer; width: 36px; padding: 0; justify-content: center; }
+button.motion-text { all: unset; cursor: pointer; color: inherit; font: inherit; }
+button.motion-text:hover { text-decoration: underline; }
+button.motion-text:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; border-radius: var(--radius-sm); }
+.legal-links { display: inline-flex; flex-wrap: wrap; gap: 4px 16px; }
+@media (max-width: 1000px) {
+  .mobile-menu button.motion-row {
+    display: flex; align-items: center; gap: 10px; padding: 13px 4px; font: inherit; font-size: 17px; font-weight: 500; text-align: start;
+    color: var(--text-body); background: none; border: 0; border-bottom: 1px solid var(--hair); cursor: pointer; width: 100%;
+  }
+  .mobile-menu button.motion-row > i:first-child, .mobile-menu button.motion-row > svg:first-child { color: var(--blue-500); flex-shrink: 0; }
+}
+@media (max-width: 760px) {
+  .mobile-menu button.motion-row { padding: 16px 4px; font-size: 18px; gap: 14px; }
+  button.motion-text { padding-block: 6px; }
+}
+
+/* המיקוד עובר לתוכן אחרי מעבר עמוד ואחרי "דילוג לתוכן" — בלי מסגרת סביב כל העמוד */
+#main:focus { outline: none; }
+
+/* קישור בתוך טקסט רץ מסומן בקו תחתון, ולא רק בצבע (מי שלא מבחין בצבעים צריך לזהות אותו) */
+#main :is(p, li, span) > a:not([class]) { text-decoration: underline; text-underline-offset: 3px; }
+#main nav :is(p, li, span) > a:not([class]) { text-decoration: none; }
+#main nav :is(p, li, span) > a:not([class]):hover { text-decoration: underline; }
+
+/* עמודי המידע המשפטי: הצהרת נגישות, מדיניות פרטיות ותנאי שימוש */
+.legal h2 { font-size: 1.25rem; margin: 30px 0 8px; }
+.legal p, .legal ul { font-size: 16px; line-height: 1.75; color: var(--text-body); margin: 0 0 10px; }
+.legal ul { padding-inline-start: 20px; }
+.legal li { margin-bottom: 4px; }
+.legal .legal-note { margin-top: 28px; padding: 14px 16px; background: var(--tint); border-radius: var(--radius-md); font-size: 14.5px; }
+
+/* הודעת פרטיות קצרה ליד כפתור השליחה בטפסים */
+.form-note { font-size: 12.5px; line-height: 1.6; color: var(--text-muted); margin: 0; }
