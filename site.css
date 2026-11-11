@@ -376,7 +376,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
 .hx-scene { position: absolute; inset: 0; z-index: 1; }
 .x3-canvas {
   position: absolute; left: 0; top: 0; display: block; width: 64%; height: 100%; opacity: 0; cursor: grab; touch-action: pan-y;
-  transition: opacity 1s var(--ease);
+  transition: opacity 0.6s var(--ease);
   /* במחשב: הציור מכסה רק את החלק השמאלי, ונמוג לפני שהוא מגיע לטקסט (הטקסט מימין) */
   -webkit-mask-image: linear-gradient(to left, transparent 0%, #000 30%);
           mask-image: linear-gradient(to left, transparent 0%, #000 30%);
