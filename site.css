@@ -1475,3 +1475,135 @@ html.live .pg-art::after { animation: spinSlow 40s linear infinite reverse; }
   .pg-dial, .pg-art::after { left: -70px; opacity: 0.4; }
 }
 @media (prefers-reduced-motion: reduce) { .pg-floor, .pg-dial, .pg-art::after { animation: none !important; } }
+
+/* =====================================================================
+   טלפון (11.11.2026): חיים אמר שבטלפון האתר "בגודל של טלפון אבל לא באמת מותאם".
+   כאן הכל מסודר מחדש למסך צר: כותרת של שורה אחת, תפריט שמכסה את המסך, הדגם כבר במסך הראשון,
+   אריחי תחומים קומפקטיים, שעות בשתי עמודות, קטלוג מקופל וכותרת תחתונה קצרה.
+   ===================================================================== */
+.nav-logo { display: none; }
+
+/* תפריט הטלפון: שורות גדולות עם אייקון, וכפתורי קשר בתחתית */
+.mobile-menu a.nav-item > i:first-child, .mobile-menu a.nav-item > svg:first-child { color: var(--blue-500); flex-shrink: 0; }
+.mobile-menu a.nav-item .chev { margin-inline-start: auto; color: var(--gray-300); }
+.menu-contact { display: none; }
+@media (max-width: 1000px) {
+  .menu-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+  .menu-contact a {
+    height: 50px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);
+    font-weight: 600; font-size: 16px; text-decoration: none !important; background: #fff; color: var(--blue-500); border: 1px solid var(--line);
+  }
+  .menu-contact a.wa { background: #25D366; color: #fff; border-color: #25D366; }
+}
+
+@media (max-width: 760px) {
+  /* כותרת של שורה אחת: לוגו, "הזמנת בדיקה" ותפריט */
+  .brandbar { display: none; }
+  .navbar { border-top: none; }
+  .navbar-in { height: 60px; gap: 8px; }
+  .nav-emblem { display: none; }
+  .nav-logo { display: inline-flex; align-items: center; line-height: 0; min-width: 0; }
+  .nav-logo img { width: min(46vw, 196px); height: auto; display: block; }
+  .nav-actions { gap: 8px; }
+  .navbar .header-cta { height: 40px !important; padding-inline: 12px !important; font-size: 14px; white-space: nowrap; }
+  .menu-btn { width: 44px; height: 44px; }
+
+  /* התפריט מכסה את המסך מתחת לכותרת, והדף מאחוריו לא זז */
+  .mobile-menu.open {
+    position: fixed; top: 60px; inset-inline: 0; bottom: 0; max-height: none; z-index: 5;
+    padding: 8px var(--gutter) calc(24px + env(safe-area-inset-bottom));
+    box-shadow: 0 12px 30px -18px rgba(16, 32, 58, 0.4);
+  }
+  .mobile-menu a.nav-item { padding: 16px 4px; font-size: 18px; gap: 14px; }
+  html.menu-open, html.menu-open body { overflow: hidden; }
+  /* טשטוש הרקע של הכותרת הופך אותה למסגרת של התפריט הקבוע — מבטלים אותו כשהתפריט פתוח */
+  html.menu-open .navbar { backdrop-filter: none; -webkit-backdrop-filter: none; background: #fff; }
+  html.menu-open .mobile-bar { display: none; }
+
+  /* כותרת תחתונה קצרה: תחומים ומידע זה לצד זה, בלי הכפילות של פרטי הקשר */
+  .g-footer { grid-template-columns: 1fr 1fr; gap: 26px 18px !important; padding-block: 32px 22px !important; }
+  .g-footer .fc-brand { grid-column: 1 / -1; }
+  .g-footer .fc-contact { display: none; }
+  .footer-col { gap: 0; }
+  .footer-col > a { padding-block: 8px; }
+  .footer-head { margin-bottom: 6px; }
+  .letterfoot-line a, .footer-legal a { display: inline-block; padding-block: 6px; }
+}
+
+/* ---------- פתיחת דף הבית: הדגם עולה למסך הראשון ---------- */
+@media (max-width: 1000px) {
+  /* מפרקים את עמודת הטקסט, כדי שאפשר יהיה לשים את הדגם בין החיפוש לבין שאר הטקסט */
+  .hx-3d { display: flex; flex-direction: column; }
+  .hx-3d .hx-in, .hx-3d .hx-copy { display: contents; }
+  .hx-3d .hx-copy > * { margin-inline: var(--gutter); }
+  .hx-3d .brand-label { align-self: flex-start; order: 1; }
+  .hx-3d .hx-title { order: 2; }
+  .hx-3d .hero-search { order: 3; position: relative; z-index: 3; max-width: none; }
+  .hx-3d .hx-scene { order: 4; }
+  .hx-3d .hx-lead { order: 5; }
+  .hx-3d .hx-stats { order: 6; }
+}
+@media (max-width: 600px) {
+  .hx { padding-top: 26px; padding-bottom: 112px; }   /* מקום לקשת הצהובה שבתחתית */
+  .hx-title { margin-top: 16px; font-size: clamp(2.35rem, 1.5rem + 4vw, 2.9rem); }
+  .hx .hero-search { margin-top: 20px; }
+  .hx .hero-search .search-box { height: 46px; }
+  .hx-3d .hx-scene { margin-top: 0; }
+  .hx-lead { margin-top: 4px; font-size: 1rem; }
+  /* שלוש הנקודות בשורה אחת */
+  .hx-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 22px; padding-top: 18px; }
+  .hx-stats > div { margin: 0; padding-inline: 0 10px; }
+  .hx-stats > div + div { padding-inline-start: 10px; }
+  .hx-stats .n.plain { font-size: 1rem; white-space: normal; }
+  .hx-stats .l { font-size: 12.5px; line-height: 1.4; }
+}
+
+/* ---------- אריחי התחומים בטלפון: שורה קומפקטית של אייקון ושם ---------- */
+@media (max-width: 640px) {
+  .g-cats { gap: 8px; }
+  .cat-tile {
+    min-height: 0; padding: 10px 12px; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto;
+    align-items: center; column-gap: 10px; border-radius: 12px;
+  }
+  .cat-tile .ic-box { grid-column: 1; grid-row: 1; width: 36px; height: 36px; border-radius: 9px; }
+  .cat-tile .ic-box svg { width: 19px; height: 19px; }
+  .cat-tile .nm { grid-column: 2; grid-row: 1; margin: 0; font-size: 14.5px; line-height: 1.25; }
+  .cat-tile .ct { display: none; }
+  .cat-tile.cta .ct { display: none; }
+  /* "לא מצאתם?" — לכל הרוחב, בסוף הרשימה */
+  .cat-tile.cta { grid-column: 1 / -1; }
+}
+
+/* ---------- "איך זה עובד" בטלפון: אייקון ושלב באותה שורה ---------- */
+@media (max-width: 520px) {
+  .steps-x ol { row-gap: 22px; }
+  .steps-x li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 14px; align-items: start; }
+  .st-ic { width: 52px; height: 52px; border-radius: 13px; grid-row: 1 / span 2; }
+  .st-no { top: -6px; font-size: 54px; }
+  .steps-x h3 { margin: 2px 0 4px; font-size: 1.15rem; }
+  .steps-x p { font-size: 15px; max-width: none; }
+}
+
+/* ---------- שעות וזמנים בטלפון: שורה קומפקטית לכל נושא — אייקון בצד, תווית וערך (בלי שבירה באמצע שעה) ---------- */
+@media (max-width: 520px) {
+  .hours-grid { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .hr-card { display: grid; grid-template-columns: 38px minmax(0, 1fr); column-gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; }
+  .hr-card .ci { grid-row: 1 / span 2; width: 38px; height: 38px; border-radius: 10px; }
+  .hr-card .k { margin: 0; font-size: 13px; }
+  .hr-card .v { margin-top: 1px; font-size: 15.5px; }
+}
+
+/* ---------- קטלוג בטלפון: תחום הוא שורה שנפתחת בלחיצה ---------- */
+.cat-fold {
+  all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 10px; width: 100%; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.cat-fold .nm { flex: 1; min-width: 0; }
+.cat-fold .arr { color: var(--blue-500); transition: transform 250ms var(--ease); flex-shrink: 0; }
+.cat-sec.fold:not(.shut) .cat-fold .arr { transform: rotate(180deg); }
+.cat-sec.fold + .cat-sec.fold { margin-top: 0; }
+.cat-sec.fold h2 { font-size: 18px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.cat-sec.fold h2::after { display: none; }
+.cat-sec.fold h2 .hd-ic { width: 36px; height: 36px; }
+.cat-sec.fold:not(.shut) { padding-bottom: 18px; }
+.cat-sec.fold:not(.shut) h2 { border-bottom: 2px solid var(--blue-500); }
