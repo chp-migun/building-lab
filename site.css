@@ -875,6 +875,13 @@ html.motion-ready .hx-glow { animation: drift 24s ease-in-out infinite; }
   box-shadow: 0 0 0 1px var(--line), 0 18px 32px -22px rgba(1, 71, 149, 0.7);
 }
 .owner-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+/* שותף בלי תמונה: האות הראשונה של השם על רקע תכלת */
+.owner-ini {
+  display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;
+  font-size: 3rem; font-weight: 800; line-height: 1; color: var(--blue-500);
+  background: radial-gradient(circle at 50% 30%, #fff, var(--blue-50) 75%);
+}
+@media (max-width: 600px) { .owner-ini { font-size: 2.3rem; } }
 .owner-card figcaption { position: relative; margin-top: 18px; display: flex; flex-direction: column; align-items: center; }
 .owner-nm { font-size: 1.12rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
 .owner-nm::after { content: ''; display: block; width: 28px; height: 3px; margin: 9px auto 8px; border-radius: 2px; background: var(--yellow-400); }
