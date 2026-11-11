@@ -382,6 +382,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, summary:focus-v
           mask-image: linear-gradient(to left, transparent 0%, #000 30%);
 }
 .x3-canvas:active { cursor: grabbing; }
+/* תמונת הרגע הראשון של הדגם: באותו מקום ובאותה מסכה כמו הציור. נעלמת אחרי שהדגם החי נכנס.
+   למי שביקש פחות תנועה הדגם מציג תמונה אחרת (רגע שקט), ולכן אצלו היא לא מוצגת */
+.x3-poster {
+  position: absolute; left: 0; top: 0; width: 64%; height: 100%; object-fit: contain; pointer-events: none; user-select: none;
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, #000 30%);
+          mask-image: linear-gradient(to left, transparent 0%, #000 30%);
+}
+.hx-scene.is-reset .x3-poster { display: none; }
+@media (prefers-reduced-motion: reduce) { .x3-poster { display: none; } }
+.hx-scene.is-ready .x3-poster { opacity: 0; transition: opacity 0.4s ease 0.55s; }
 .hx-scene.is-ready .x3-canvas { opacity: 1; }
 .hx-scene.is-reset .x3-canvas, .hx-scene.is-reset .x3-pin { opacity: 0; transition: opacity 0.6s ease; }
 
@@ -470,6 +480,11 @@ html.motion-ready .hx-scene.is-ready:not(.was-dragged) .x3-hint { animation: hin
   .hx-scene { position: relative; inset: auto; height: clamp(360px, 95vw, 580px); margin-top: 8px; }
   .x3-canvas {
     position: static; width: 100%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
+  }
+  .x3-poster {
+    width: 100%;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, #000 14%, #000 90%, transparent 100%);
   }
